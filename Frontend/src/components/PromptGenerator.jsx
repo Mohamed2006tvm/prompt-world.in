@@ -74,7 +74,7 @@ const PromptGenerator = () => {
     try {
       const token = localStorage.getItem('token');
       
-      const response = await fetch(`http://localhost:5000/generate`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

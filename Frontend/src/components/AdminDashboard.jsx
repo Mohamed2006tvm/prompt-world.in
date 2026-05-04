@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/admin/users', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/users`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(res.data);
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   const updateCredits = async (userId, newCredits) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/admin/update-credits', {
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/admin/update-credits`, {
         userId,
         credits: parseInt(newCredits)
       }, {
